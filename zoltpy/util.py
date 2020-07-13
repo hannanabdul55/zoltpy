@@ -107,7 +107,7 @@ def delete_model(conn, project_name, model_name):
         logger.info(f"delete_model(): no existing model. model={model_name}")
 
 
-def upload_forecast(conn, json_io_dict, forecast_filename, project_name, model_name, timezero_date, notes='',
+def upload_forecast(conn, json_io_dict, forecast_filename, project_name, model_abbr, timezero_date, notes='',
                     overwrite=False):
     """
     Uploads the passed JSON dictionary file to the model corresponding to the args.
@@ -134,7 +134,7 @@ def upload_forecast(conn, json_io_dict, forecast_filename, project_name, model_n
 
     # get models for project
     models = project.models
-    model = [model for model in models if model.name == model_name][0]
+    model = [model for model in models if model.abbreviation == model_abbr][0]
 
     # check json formatting before upload
     # accepts either string or dictionary
